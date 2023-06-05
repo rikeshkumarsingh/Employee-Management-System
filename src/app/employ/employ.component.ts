@@ -29,10 +29,9 @@ export class EmployComponent implements OnInit {
     }
 
    
-      navigateToUpdate() {
-        this.router.navigate(['/update']);
-      }
-
+    navigateToUpdate(id: number) {
+      this.router.navigate(['/update', id]);
+    }
       
     
       

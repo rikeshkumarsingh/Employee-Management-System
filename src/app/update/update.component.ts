@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Employ } from '../employ';
-import {Router}from '@angular/router'
+import {Router}from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { EmployeeService } from '../employee.service';
 
@@ -12,8 +13,23 @@ import { EmployeeService } from '../employee.service';
 export class UpdateComponent {
   employs: Employ[] = [];
   employForm: Employ =new Employ(0, '', '', 0);
-  constructor(private emoloyservice: EmployeeService,private router:Router) { }
-  
+  employId: any;
+  constructor(
+    private emoloyservice: EmployeeService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
+    this.route.params.subscribe(params => {
+      this.employId = params['id']; // Get the ID from the URL
+    });
+  }
+  ngOnInit() {
+    // Fetch the employee data based on the ID
+    this.emoloyservice.getEmployee(this.employId)
+      .subscribe((employ: Employ) => {
+        this.employForm = employ;
+      });
+  }
   updateEmployee(employ: Employ): void {
     this.emoloyservice.updateEmploy(employ)
       .subscribe(updatedEmploy => {
@@ -24,7 +40,7 @@ export class UpdateComponent {
           this.employs[index] = updatedEmploy;
         }
       });
-      this.router.navigate(['/employ']);
+    this.router.navigate(['/employ']);
   }
 
 }

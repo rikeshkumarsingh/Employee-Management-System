@@ -9,10 +9,15 @@ import { Employ } from './employ';
 export class EmployeeService {
  
   private baseUrl='http://localhost:8080/api/v1/employ';
+  
   constructor(private httpclient:HttpClient) { }
 
   getEmployList():Observable<Employ[]>{
   return this.httpclient.get<Employ[]>(`${this.baseUrl}`);
+  }
+  getEmployee(id: number): Observable<Employ> {
+    const url = `${this.baseUrl}/${id}`;
+    return this.httpclient.get<Employ>(url);
   }
 
   addEmploy(employ: Employ): Observable<Employ> {

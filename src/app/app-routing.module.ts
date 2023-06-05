@@ -8,7 +8,7 @@ const routes: Routes = [
 {path:'employ',component:EmployComponent},
 {path:'',redirectTo:'employ',pathMatch:'full'},
 {path:'add',component:AddempComponent},
-{path:'update',component:UpdateComponent}
+{path:'update/:id',component:UpdateComponent}
 
 
 

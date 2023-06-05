@@ -3,7 +3,7 @@
     <table class="table table-striped">
       <tr>
         <label for="id">Id</label>
-        <input type="number" class="form-control" [(ngModel)]="employForm.id" name="id" placeholder="Id" required><br>
+        <span class="form-control">{{ employForm.id }}</span>
         <label for="name">Name</label>
         <input type="text" class="form-control" [(ngModel)]="employForm.name" name="name" placeholder="Name" required><br>
         <label for="email">Email</label>
