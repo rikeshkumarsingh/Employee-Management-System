@@ -1,0 +1,12 @@
+<div class="container">
+    <h2>Add Employee</h2>
+    <form (submit)="addEmploy()">
+        <label >Name</label>
+        <input type="text" class="form-control" [(ngModel)]="employForm.name" name="name" placeholder="Name" required><br>
+        <label >Email</label>
+        <input type="email" class="form-control" [(ngModel)]="employForm.email" name="email" placeholder="Email" required><br>
+        <label >Phone</label>
+        <input type="tel" class="form-control" [(ngModel)]="employForm.phone" name="phone" placeholder="Phone" required><br>
+        <button style="background-color: rgb(139, 113, 65);" class="form-control" type="submit">Add</button>
+      </form>
+  </div>
